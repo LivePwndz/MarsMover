@@ -2,30 +2,30 @@ package marsrover;
 
 public class Rover {
 
-	private int x;
-	private int y;
+	private Point x;
+	private Point y;
 	private Direction direction;
 
-	public Rover(int x, int y, Direction direction) {
+	public Rover(Point x, Point y, Direction direction) {
 		super();
 		this.x = x;
 		this.y = y;
 		this.direction = direction;
 	}
 
-	public int getX() {
+	public Point getX() {
 		return x;
 	}
 
-	public void setX(int x) {
+	public void setX(Point x) {
 		this.x = x;
 	}
 
-	public int getY() {
+	public Point getY() {
 		return y;
 	}
 
-	public void setY(int y) {
+	public void setY(Point y) {
 		this.y = y;
 	}
 
@@ -38,13 +38,13 @@ public class Rover {
 	}
 
 	private void moveForward() {
-		x++;
-		y++;
+		x.moveForward();
+		y.moveForward();
 	}
 
 	private void moveBackward() {
-		x--;
-		y--;
+		x.moveBackward();
+		y.moveBackward();
 
 	}
 
