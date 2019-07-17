@@ -13,6 +13,72 @@ public class Rover {
 		this.direction = direction;
 	}
 
+	public void moveForward() {
+
+		Direction currentDirection = getDirection();
+		switch (currentDirection) {
+
+		case N: {
+			y.moveForward();
+			break;
+		}
+
+		case E: {
+			x.moveForward();
+			break;
+		}
+
+		case S: {
+			y.moveBackward();
+			break;
+		}
+
+		case W: {
+			x.moveBackward();
+			break;
+		}
+
+		default: {
+			throw new RuntimeException("Unknown direction");
+		}
+
+		}
+
+	}
+
+	public void moveBackward() {
+
+		Direction currentDirection = getDirection();
+		switch (currentDirection) {
+
+		case N: {
+			y.moveBackward();
+			break;
+		}
+
+		case E: {
+			x.moveBackward();
+			break;
+		}
+
+		case S: {
+			y.moveForward();
+			break;
+		}
+
+		case W: {
+			x.moveForward();
+			break;
+		}
+
+		default: {
+			throw new RuntimeException("Unknown direction");
+		}
+
+		}
+
+	}
+
 	public Point getX() {
 		return x;
 	}
@@ -37,16 +103,7 @@ public class Rover {
 		this.direction = direction;
 	}
 
-	private void moveForward() {
-		x.moveForward();
-		y.moveForward();
-	}
 
-	private void moveBackward() {
-		x.moveBackward();
-		y.moveBackward();
-
-	}
 
 	private void turnLeft() {
 		Direction currentDirection = getDirection();
@@ -115,7 +172,7 @@ public class Rover {
 	public void receiveCommands(char[] commands) {
 		if (commands == null)
 			throw new RuntimeException("Commands argument is NULL");
-		
+
 		for (char command : commands) {
 			receiveCommand(command);
 		}
