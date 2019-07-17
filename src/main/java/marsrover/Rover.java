@@ -37,23 +37,23 @@ public class Rover {
 		this.direction = direction;
 	}
 
-	public void moveForward() {
+	private void moveForward() {
 		x++;
 		y++;
 	}
 
-	public void moveBackward() {
+	private void moveBackward() {
 		x--;
 		y--;
 
 	}
 
-	public void turnLeft() {
+	private void turnLeft() {
 		Direction currentDirection = getDirection();
 		switch (currentDirection) {
 
 		case N: {
-			setDirection( Direction.W );
+			setDirection(Direction.W);
 			break;
 		}
 
@@ -79,9 +79,8 @@ public class Rover {
 		}
 
 	}
-	
-	
-	public void turnRight() {
+
+	private void turnRight() {
 		Direction currentDirection = getDirection();
 		switch (currentDirection) {
 
@@ -111,6 +110,35 @@ public class Rover {
 
 		}
 
+	}
+
+	public void receiveCommand(char f) {
+
+		switch (f) {
+		case 'f': {
+			moveForward();
+			break;
+		}
+
+		case 'b': {
+			moveBackward();
+			break;
+		}
+		
+		case 'l': {
+			turnLeft();
+			break;
+		}
+		
+		case 'r': {
+			turnRight();
+			break;
+		}
+
+		default: {
+			throw new RuntimeException("Unknown command: " + f);
+		}
+		}
 	}
 
 }

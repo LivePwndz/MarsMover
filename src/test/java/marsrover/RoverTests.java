@@ -2,7 +2,6 @@ package marsrover;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class RoverTests {
@@ -21,8 +20,7 @@ public class RoverTests {
 
 		int newX = x + 1;
 		int newY = y + 1;
-
-		rover.moveForward();
+		rover.receiveCommand('f');
 		Assert.assertTrue(rover.getX() == newX && rover.getY() == newY);
 
 	}
@@ -35,17 +33,16 @@ public class RoverTests {
 		int newX = x - 1;
 		int newY = y - 1;
 
-		rover.moveBackward();
+		rover.receiveCommand('b');
 		Assert.assertTrue(rover.getX() == newX && rover.getY() == newY);
 
 	}
 
 	@Test
 	public void shouldTurnLeft() {
-
 		// Set direction
 		rover.setDirection(Direction.N);
-		rover.turnLeft();
+		rover.receiveCommand('l');
 		Assert.assertTrue(rover.getDirection().equals(Direction.W));
 
 	}
@@ -54,7 +51,7 @@ public class RoverTests {
 	public void shouldTurnRight() {
 		// Set direction
 		rover.setDirection(Direction.W);
-		rover.turnRight();
+		rover.receiveCommand('r');
 		Assert.assertTrue(rover.getDirection().equals(Direction.N));
 
 	}
