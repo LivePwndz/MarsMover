@@ -4,9 +4,9 @@ public class Rover {
 
 	private int x;
 	private int y;
-	private String direction;
+	private Direction direction;
 
-	public Rover(int x, int y, String direction) {
+	public Rover(int x, int y, Direction direction) {
 		super();
 		this.x = x;
 		this.y = y;
@@ -29,11 +29,11 @@ public class Rover {
 		this.y = y;
 	}
 
-	public String getDirection() {
+	public Direction getDirection() {
 		return direction;
 	}
 
-	public void setDirection(String direction) {
+	public void setDirection(Direction direction) {
 		this.direction = direction;
 	}
 
@@ -49,26 +49,26 @@ public class Rover {
 	}
 
 	public void turnLeft() {
-		String currentDirection = getDirection();
+		Direction currentDirection = getDirection();
 		switch (currentDirection) {
 
-		case "N": {
-			setDirection("W");
+		case N: {
+			setDirection( Direction.W );
 			break;
 		}
 
-		case "W": {
-			setDirection("S");
+		case W: {
+			setDirection(Direction.S);
 			break;
 		}
 
-		case "S": {
-			setDirection("E");
+		case S: {
+			setDirection(Direction.E);
 			break;
 		}
 
-		case "E": {
-			setDirection("N");
+		case E: {
+			setDirection(Direction.N);
 			break;
 		}
 
@@ -82,26 +82,26 @@ public class Rover {
 	
 	
 	public void turnRight() {
-		String currentDirection = getDirection();
+		Direction currentDirection = getDirection();
 		switch (currentDirection) {
 
-		case "N": {
-			setDirection("E");
+		case N: {
+			setDirection(Direction.E);
 			break;
 		}
 
-		case "E": {
-			setDirection("S");
+		case E: {
+			setDirection(Direction.S);
 			break;
 		}
 
-		case "S": {
-			setDirection("W");
+		case S: {
+			setDirection(Direction.W);
 			break;
 		}
 
-		case "W": {
-			setDirection("N");
+		case W: {
+			setDirection(Direction.N);
 			break;
 		}
 
