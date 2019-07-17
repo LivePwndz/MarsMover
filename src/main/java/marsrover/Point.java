@@ -16,7 +16,9 @@ public class Point {
 		this.valueMax = valueMax;
 	}
 	
-	
+	public int getValueMax() {
+		return valueMax;
+	}
 	
 	
 	public int getValue() {

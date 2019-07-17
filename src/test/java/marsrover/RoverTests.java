@@ -47,12 +47,11 @@ public class RoverTests {
 
 	@Test
 	public void shouldMoveForwardAndWrap() {
-		// rover.setX(new Point(10));
-		int x = rover.getX().getValue();
-		int y = rover.getY().getValue();
+		rover.setX(new Point(10));
+		rover.setY(new Point(10));
 
-		int newXValue = x + 1;
-		int newYValue = y + 1;
+		int newXValue = 0;
+		int newYValue = 0;
 		rover.receiveCommands(new char[] { 'f' });
 
 		Assert.assertTrue(rover.getX().getValue() == newXValue && rover.getY().getValue() == newYValue);
@@ -66,6 +65,19 @@ public class RoverTests {
 
 		int newXValue = x - 1;
 		int newYValue = y - 1;
+
+		rover.receiveCommands(new char[] { 'b' });
+		Assert.assertTrue(rover.getX().getValue() == newXValue && rover.getY().getValue() == newYValue);
+
+	}
+	
+	@Test
+	public void shouldMoveBackwardAndWrap() {
+		rover.setX(new Point(0));
+		rover.setY(new Point(0));
+
+		int newXValue = rover.getX().getValueMax();
+		int newYValue = rover.getX().getValueMax();
 
 		rover.receiveCommands(new char[] { 'b' });
 		Assert.assertTrue(rover.getX().getValue() == newXValue && rover.getY().getValue() == newYValue);
@@ -86,6 +98,24 @@ public class RoverTests {
 		// Set direction
 		rover.setDirection(Direction.W);
 		rover.receiveCommands(new char[] { 'r' });
+		Assert.assertTrue(rover.getDirection().equals(Direction.N));
+
+	}
+	
+	@Test
+	public void shouldMakeCompleteTurnClockwise() {
+		// Set direction
+		rover.setDirection(Direction.N);
+		rover.receiveCommands(new char[] { 'r','r','r','r' });
+		Assert.assertTrue(rover.getDirection().equals(Direction.N));
+
+	}
+	
+	@Test
+	public void shouldMakeCompleteTurnAntiClockwise() {
+		// Set direction
+		rover.setDirection(Direction.N);
+		rover.receiveCommands(new char[] { 'l','l','l','l' });
 		Assert.assertTrue(rover.getDirection().equals(Direction.N));
 
 	}
