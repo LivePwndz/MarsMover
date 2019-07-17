@@ -1,16 +1,37 @@
 package marsrover;
 
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 public class RoverTests {
 
-	private static Rover rover;
+	private Rover rover;
 
-	@BeforeClass
-	public static void setup() {
+	@Before
+	public void setup() {
 		rover = new Rover(1, 1, Direction.N);
+	}
+	
+	
+	@Test( expected = RuntimeException.class )
+	public void onReceivingInvalidCommandshouldThrowRuntimeException() {
+		rover.receiveCommands(new char[] { 'K' });
+	}
+	
+
+	@Test
+	public void shouldReceiveMultipleCommands() {
+		int x = rover.getX();
+		int y = rover.getY();
+
+		int newX = x + 0;
+		int newY = y + 0;
+		rover.receiveCommands(new char[] { 'f', 'b', 'l', 'r' });
+
+		Assert.assertTrue(rover.getX() == newX && rover.getY() == newY);
+		Assert.assertTrue(rover.getDirection().equals(Direction.N));
+
 	}
 
 	@Test
@@ -20,7 +41,8 @@ public class RoverTests {
 
 		int newX = x + 1;
 		int newY = y + 1;
-		rover.receiveCommand('f');
+		rover.receiveCommands(new char[] { 'f' });
+
 		Assert.assertTrue(rover.getX() == newX && rover.getY() == newY);
 
 	}
@@ -33,7 +55,7 @@ public class RoverTests {
 		int newX = x - 1;
 		int newY = y - 1;
 
-		rover.receiveCommand('b');
+		rover.receiveCommands(new char[] { 'b' });
 		Assert.assertTrue(rover.getX() == newX && rover.getY() == newY);
 
 	}
@@ -42,7 +64,7 @@ public class RoverTests {
 	public void shouldTurnLeft() {
 		// Set direction
 		rover.setDirection(Direction.N);
-		rover.receiveCommand('l');
+		rover.receiveCommands(new char[] { 'l' });
 		Assert.assertTrue(rover.getDirection().equals(Direction.W));
 
 	}
@@ -51,7 +73,7 @@ public class RoverTests {
 	public void shouldTurnRight() {
 		// Set direction
 		rover.setDirection(Direction.W);
-		rover.receiveCommand('r');
+		rover.receiveCommands(new char[] { 'r' });
 		Assert.assertTrue(rover.getDirection().equals(Direction.N));
 
 	}

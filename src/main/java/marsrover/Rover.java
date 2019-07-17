@@ -112,7 +112,16 @@ public class Rover {
 
 	}
 
-	public void receiveCommand(char f) {
+	public void receiveCommands(char[] commands) {
+		if (commands == null)
+			throw new RuntimeException("Commands argument is NULL");
+		
+		for (char command : commands) {
+			receiveCommand(command);
+		}
+	}
+
+	private void receiveCommand(char f) {
 
 		switch (f) {
 		case 'f': {
@@ -124,12 +133,12 @@ public class Rover {
 			moveBackward();
 			break;
 		}
-		
+
 		case 'l': {
 			turnLeft();
 			break;
 		}
-		
+
 		case 'r': {
 			turnRight();
 			break;
