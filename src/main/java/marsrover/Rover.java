@@ -14,6 +14,7 @@ public class Rover {
 		this.y = y;
 		this.direction = direction;
 	}
+	
 
 	public int getX() {
 		return x;
@@ -37,6 +38,19 @@ public class Rover {
 
 	public void setDirection(String direction) {
 		this.direction = direction;
+	}
+
+
+	public void moveForward() {
+		x++;
+		y++;
+	}
+
+
+	public void moveBackward() {
+		x--;
+		y--;
+		
 	}
 
 }
