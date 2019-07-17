@@ -18,26 +18,27 @@ public class RoverTests {
 		rover.receiveCommands(new char[] { 'K' });
 	}
 
+	// @Ignore
 	@Test
-	public void shouldReceiveMultipleCommands() {
+	public void facingNorthShouldReceiveMultipleCommands() {
 		int x = rover.getX().getValue();
 		int y = rover.getY().getValue();
 
 		int newXValue = x + 0;
 		int newYValue = y + 0;
 		rover.receiveCommands(new char[] { 'f', 'b', 'l', 'r' });
-
 		Assert.assertTrue(rover.getX().getValue() == newXValue && rover.getY().getValue() == newYValue);
 		Assert.assertTrue(rover.getDirection().equals(Direction.N));
 
 	}
 
+	// @Ignore
 	@Test
-	public void shouldMoveForward() {
+	public void facingNorthShouldMoveForward() {
 		int x = rover.getX().getValue();
 		int y = rover.getY().getValue();
 
-		int newXValue = x + 1;
+		int newXValue = x;
 		int newYValue = y + 1;
 		rover.receiveCommands(new char[] { 'f' });
 
@@ -45,12 +46,13 @@ public class RoverTests {
 
 	}
 
+	// @Ignore
 	@Test
-	public void shouldMoveForwardAndWrap() {
-		rover.setX(new Point(10));
+	public void facingNorthShouldMoveForwardAndWrap() {
+		
 		rover.setY(new Point(10));
 
-		int newXValue = 0;
+		int newXValue = rover.getX().getValue();
 		int newYValue = 0;
 		rover.receiveCommands(new char[] { 'f' });
 
@@ -59,11 +61,11 @@ public class RoverTests {
 	}
 
 	@Test
-	public void shouldMoveBackward() {
+	public void facingNorthShouldMoveBackward() {
 		int x = rover.getX().getValue();
 		int y = rover.getY().getValue();
 
-		int newXValue = x - 1;
+		int newXValue = x;
 		int newYValue = y - 1;
 
 		rover.receiveCommands(new char[] { 'b' });
@@ -71,13 +73,14 @@ public class RoverTests {
 
 	}
 	
+	
 	@Test
-	public void shouldMoveBackwardAndWrap() {
-		rover.setX(new Point(0));
+	public void facingNorthShouldMoveBackwardAndWrap() {
+		// rover.setX(new Point(0));
 		rover.setY(new Point(0));
 
-		int newXValue = rover.getX().getValueMax();
-		int newYValue = rover.getX().getValueMax();
+		int newXValue = rover.getX().getValue();
+		int newYValue = rover.getY().getValueMax();
 
 		rover.receiveCommands(new char[] { 'b' });
 		Assert.assertTrue(rover.getX().getValue() == newXValue && rover.getY().getValue() == newYValue);

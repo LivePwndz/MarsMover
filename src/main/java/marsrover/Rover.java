@@ -13,10 +13,8 @@ public class Rover {
 		this.direction = direction;
 	}
 
-	public void moveForward() {
-
-		Direction currentDirection = getDirection();
-		switch (currentDirection) {
+	public void move( Direction direction) {
+		switch (direction) {
 
 		case N: {
 			y.moveForward();
@@ -47,36 +45,12 @@ public class Rover {
 	}
 
 	public void moveBackward() {
-
-		Direction currentDirection = getDirection();
-		switch (currentDirection) {
-
-		case N: {
-			y.moveBackward();
-			break;
-		}
-
-		case E: {
-			x.moveBackward();
-			break;
-		}
-
-		case S: {
-			y.moveForward();
-			break;
-		}
-
-		case W: {
-			x.moveForward();
-			break;
-		}
-
-		default: {
-			throw new RuntimeException("Unknown direction");
-		}
-
-		}
-
+		Direction reverseDirection = getDirection().getReverseDirection();
+		move(reverseDirection);
+	}
+	
+	public void moveForward() {
+		move(getDirection());
 	}
 
 	public Point getX() {
